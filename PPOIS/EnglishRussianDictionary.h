@@ -1,14 +1,22 @@
+/**
+* @file EnglishRussianDictionary.h
+* This file containce prototipes of main Class
+*/
+
+
 #pragma once
 #include <string>
 #include "gtest/gtest.h"
 #include <fstream>
 
+
+/// Struct, thet contain information about nodes of the binar tree
 struct PairOfWords
 {
-	std::string english_word_ = NULL;
-	std::string russian_tranlation_ = NULL;
-	PairOfWords* right_child_;
-	PairOfWords* left_child_;
+	std::string english_word_;///<It's english word, thet is used like key
+	std::string russian_tranlation_;///< It's the translstion of the english word
+	PairOfWords* right_child_ = NULL;///< It's the pointer to one of 2 children
+	PairOfWords* left_child_ = NULL;///< It's the pointer to one of 2 children
 };
 
 

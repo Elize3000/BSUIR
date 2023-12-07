@@ -1,3 +1,9 @@
+/**
+* @file EnglishRussianDictionary.cpp
+* File, thet containe all informaition about realization of main class EnglishRussianDictionary
+*/
+
+
 #include "pch.h"
 #include <fstream>
 #include "EnglishRussianDictionary.h"
@@ -8,7 +14,9 @@
 	{
 		english_russian_dictionary_tree_root_ = NULL;
 	}
-
+	/**
+	*Clears the memory
+	*/
 	void EnglishRussianDictionary::DeleteAll(PairOfWords* root)
 	{
 		if (root == NULL)
@@ -24,6 +32,9 @@
 		english_russian_dictionary_tree_root_ == NULL;
 	}
 
+	/**
+	*Adds the pair of words. Also checs if the added element already in tree
+	*/
 	bool EnglishRussianDictionary::AddNewPairOfWords(std::string english_word, std::string russian_translation)
 	{
 		PairOfWords* new_pair_of_words = new PairOfWords;
@@ -44,6 +55,10 @@
 		return true;
 	}
 
+	/**
+	*Searches for plsce, were element coud be instolen
+	*/
+
 	PairOfWords* EnglishRussianDictionary::FindPerentForNew(PairOfWords* root, PairOfWords* new_element)
 	{
 		if (root->english_word_ == new_element->english_word_)
@@ -55,6 +70,9 @@
 		return root;
 
 	}
+	/**
+	*Searches for an element
+	*/
 
 	PairOfWords* EnglishRussianDictionary::FindElement(std::string english_word)
 	{
@@ -78,6 +96,10 @@
 				return current_search_point_;
 	}
 
+	/**
+	*searches for elemen, thet is perent 
+	*/
+
 	PairOfWords* EnglishRussianDictionary::FindPerantElement(std::string english_word, PairOfWords* root)
 	{
 		if (root->left_child_->english_word_ == english_word || root->right_child_->english_word_ == english_word)
@@ -88,6 +110,10 @@
 			return FindPerantElement(english_word, root->right_child_);
 		
 	}
+
+	/**
+	*Searches and deletes element
+	*/
 
 	bool EnglishRussianDictionary::DeleteEnglishWord(std::string english_word)
 	{
@@ -110,6 +136,10 @@
 
 
 	}
+
+	/**
+	*Different algorithm for different situations
+	*/
 
 	bool EnglishRussianDictionary::DeleteEnglishWordNoChildren(PairOfWords* root)
 	{
@@ -158,7 +188,12 @@
 			Perent->left_child_ == Child;
 		return true;
 
+
 	}
+
+	/**
+	*Changes translation for english word
+	*/
 
 	bool EnglishRussianDictionary::ChangeTranslation(std::string english_word, std::string russian_translation)
 	{
@@ -171,6 +206,10 @@
 		return false;
 	}
 
+	/**
+	*Opperation override
+	*/
+
 	std::string EnglishRussianDictionary::operator [](std::string english_word)
 	{
 		PairOfWords* faunded_elemeent = FindElement(english_word);
@@ -179,12 +218,20 @@
 		else return faunded_elemeent->russian_tranlation_;
 	}
 
+	/**
+	*ACounts the namber of words in the dictionary
+	*/
+
 	int EnglishRussianDictionary::CountNamberOfWords(PairOfWords* root)
 	{
 		if (root == NULL)
 			return 0;
 		return CountNamberOfWords(root->left_child_) + CountNamberOfWords(root->right_child_) + 1;
 	}
+
+	/**
+	*Enters dictionary from file
+	*/
 
 bool EnglishRussianDictionary::ReadDictionaryFromFile(EnglishRussianDictionary& new_dictionary, std::string filename)
 {
