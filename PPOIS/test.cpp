@@ -1,1 +1,92 @@
-#include "pch.h"/*** @file  Test.cpp*///#include "EnglishRussianDictionary.h"#include "EnglishRussianDictionary.cpp"TEST(DictionaryTest, TranslationTest) {   EnglishRussianDictionary dictionary;	dictionary.AddNewPairOfWords("Table", "—ÚÓÎ");	ASSERT_EQ(dictionary["Table"], "—ÚÓÎ");}TEST(DictionaryTest, RemoveElementTest) {	EnglishRussianDictionary dictionary;	dictionary.AddNewPairOfWords("BSUIR", "¡√”»–");	ASSERT_TRUE(dictionary.("BSUIR"));	dictionary.DeleteEnglishWord("BSUIR");	ASSERT_FALSE(dictionary.IsContains("BSUIR"));}TEST(DictionaryTest, UpdateTranslationTest) {	EnglishRussianDictionary dictionary;	dictionary.AddNewPairOfWords("ai", "ËË");	dictionary.AddNewPairOfWords("reading", "˜ÚÂÌËÂ");	dictionary.ChangeTranslation("ai", "ÚÓÔÒÔÂˆÛı‡");	dictionary.ChangeTranslation("reading", "ıÓ··Ë");	ASSERT_EQ(dictionary["ai"], "ÚÓÔÒÔÂˆÛı‡");	ASSERT_EQ(dictionary["reading"], "ıÓ··Ë");}TEST(DictionaryTest, GetCountTest) {	EnglishRussianDictionary dictionary;	dictionary.AddNewPairOfWords("sun", "ÒÓÎÌˆÂ");	dictionary.AddNewPairOfWords("shiba-inu", "ÒË·‡-ËÌÛ");	dictionary.AddNewPairOfWords("mint", "ÏˇÚ‡");	dictionary.AddNewPairOfWords("beauty", "Í‡ÒÓÚ‡");	dictionary.AddNewPairOfWords("japan", "ˇÔÓÌËˇ");	dictionary.AddNewPairOfWords("clover", "ÍÎÂ‚Â");	dictionary.AddNewPairOfWords("lavender", "Î‡‚‡Ì‰‡");	dictionary.AddNewPairOfWords("design", "‰ËÁ‡ÈÌ");	dictionary.AddNewPairOfWords("headphones", "Ì‡Û¯ÌËÍË");	dictionary.AddNewPairOfWords("library", "·Ë·ÎËÓÚÂÍ‡");	dictionary.AddNewPairOfWords("outfit", "Ó·‡Á");	ASSERT_EQ(dictionary.CountNamberOfWords(dictionary), 11);}TEST(DictionaryTest, LoadFromFileTest) {	EnglishRussianDictionary dictionary;	ASSERT_TRUE(dictionary.CountNamberOfWords(dictionary) == 0);	auto file = "file.txt";	dictionary.ReadDictionaryFromFile(dictionary, file);	ASSERT_TRUE(dictionary.CountNamberOfWords(dictionary) > 0);}
+/**
+* @file  Test.cpp
+*/
+
+#include "pch.h"
+#include "EnglishRussianDictionary.h"
+
+TEST(TestCaseName, TestName) {
+  EXPECT_EQ(1, 1);
+  EXPECT_TRUE(true);
+}
+
+TEST(DictionaryTest, FindElementTest) {
+	EnglishRussianDictionary dictionary;
+
+	dictionary.AddNewPairOfWords("Table", "Stol");
+
+	ASSERT_EQ(dictionary["Table"], "Stol");
+}
+
+TEST(DictionaryTest, DeleteElementTest) {
+	EnglishRussianDictionary dictionary;
+
+	dictionary.AddNewPairOfWords("BSUIR", "BGYIR");
+	ASSERT_TRUE(dictionary.IsContain("BSUIR"));
+
+	dictionary.DeleteEnglishWord("BSUIR");
+	ASSERT_FALSE(dictionary.IsContain("BSUIR"));
+
+	
+	dictionary.AddNewPairOfWords("mint", "–º—è—Ç–∞");
+	dictionary.AddNewPairOfWords("beauty", "–∫—Ä–∞—Å–æ—Ç–∞");
+	dictionary.AddNewPairOfWords("japan", "—è–ø–æ–Ω–∏—è");
+	dictionary.AddNewPairOfWords("clover", "–∫–ª–µ–≤–µ—Ä");
+	dictionary.AddNewPairOfWords("lavender", "–ª–∞–≤–∞–Ω–¥–∞");
+	dictionary.AddNewPairOfWords("sun", "—Å–æ–ª–Ω—Ü–µ");
+	dictionary.AddNewPairOfWords("shiba-inu", "—Å–∏–±–∞-–∏–Ω—É");
+	dictionary.AddNewPairOfWords("design", "–¥–∏–∑–∞–π–Ω");
+	dictionary.AddNewPairOfWords("headphones", "–Ω–∞—É—à–Ω–∏–∫–∏");
+	dictionary.AddNewPairOfWords("library", "–±–∏–±–ª–∏–æ—Ç–µ–∫–∞");
+	dictionary.AddNewPairOfWords("outfit", "–æ–±—Ä–∞–∑");
+
+	dictionary.DeleteEnglishWord("clover");
+	ASSERT_FALSE(dictionary.IsContain("clover"));
+
+	dictionary.DeleteEnglishWord("japan");
+	ASSERT_FALSE(dictionary.IsContain("japan"));
+
+}
+
+TEST(DictionaryTest, AddNewTest) {
+	EnglishRussianDictionary dictionary;
+
+	dictionary.AddNewPairOfWords("ai", "ii");
+	dictionary.AddNewPairOfWords("reading", "chtenie");
+
+	dictionary.ChangeTranslation("ai", "topcpecuha");
+	dictionary.ChangeTranslation("reading", "hobby");
+
+	ASSERT_EQ(dictionary["ai"], "topcpecuha");
+	ASSERT_EQ(dictionary["reading"], "hobby");
+}
+
+TEST(DictionaryTest, CountNamberTest) {
+	EnglishRussianDictionary dictionary;
+
+	dictionary.AddNewPairOfWords("sun", "—Å–æ–ª–Ω—Ü–µ");
+	dictionary.AddNewPairOfWords("shiba-inu", "—Å–∏–±–∞-–∏–Ω—É");
+	dictionary.AddNewPairOfWords("mint", "–º—è—Ç–∞");
+	dictionary.AddNewPairOfWords("beauty", "–∫—Ä–∞—Å–æ—Ç–∞");
+	dictionary.AddNewPairOfWords("japan", "—è–ø–æ–Ω–∏—è");
+	dictionary.AddNewPairOfWords("clover", "–∫–ª–µ–≤–µ—Ä");
+	dictionary.AddNewPairOfWords("lavender", "–ª–∞–≤–∞–Ω–¥–∞");
+	dictionary.AddNewPairOfWords("design", "–¥–∏–∑–∞–π–Ω");
+	dictionary.AddNewPairOfWords("headphones", "–Ω–∞—É—à–Ω–∏–∫–∏");
+	dictionary.AddNewPairOfWords("library", "–±–∏–±–ª–∏–æ—Ç–µ–∫–∞");
+	dictionary.AddNewPairOfWords("outfit", "–æ–±—Ä–∞–∑");
+
+
+	ASSERT_EQ(dictionary.CountNamberOfWords(), 11);
+}
+
+
+TEST(DictionaryTest, ReadDictionaryFromFileTest) {
+	EnglishRussianDictionary dictionary;
+	ASSERT_TRUE(dictionary.CountNamberOfWords() == 0);
+
+	std::string file = "test.txt";
+	dictionary.ReadDictionaryFromFile(dictionary, file);
+	ASSERT_EQ(dictionary.CountNamberOfWords(), 3);
+}
+
