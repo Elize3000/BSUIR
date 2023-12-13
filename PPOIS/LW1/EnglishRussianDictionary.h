@@ -8,8 +8,6 @@
 #include <string>
 #include <fstream>
 #include "gtest/gtest.h"
-//#include "d:\LW1\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6\build\native\include\gtest\gtest.h"
-//#include "D:\LW1\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6\build\native\include\gtest\gtest.h"
 
 /// Struct, thet contain information about nodes of the binar tree
 struct PairOfWords
@@ -23,12 +21,12 @@ struct PairOfWords
 
 class EnglishRussianDictionary
 {
-protected:
+private:
 	PairOfWords* english_russian_dictionary_tree_root_;
 
-	void DeleteAll(PairOfWords* root);//done
+	void DeleteAll(PairOfWords* root);
 
-	PairOfWords* FindPerentForNew(std::string english_word, PairOfWords* root);//done
+	PairOfWords* FindPerentForNew(std::string english_word, PairOfWords* root);
 
 	bool DeleteEnglishWordNoChildren(PairOfWords* root);
 
@@ -38,28 +36,28 @@ protected:
 
 	PairOfWords* FindPerantElement(std::string english_word, PairOfWords* root);
 
-	PairOfWords* FindElement(std::string english_word, PairOfWords* root);//done
+	PairOfWords* FindElement(std::string english_word, PairOfWords* root);
 
-	int CountNamberOfWordsLogic(PairOfWords* root);//done
+	int CountNamberOfWordsLogic(PairOfWords* root);
 
 public:
-	EnglishRussianDictionary();//done
+	EnglishRussianDictionary();
 
-	~EnglishRussianDictionary();//done
+	~EnglishRussianDictionary();
 
-	bool IsContain(std::string english_word);//done
+	bool IsContain(std::string english_word);
 
-	bool AddNewPairOfWords(std::string english_word, std::string russian_translation);//done
+	bool AddNewPairOfWords(std::string english_word, std::string russian_translation);
 
-	int CountNamberOfWords();//done
+	int CountNamberOfWords();
 
 	bool DeleteEnglishWord(std::string english_word);
 
-	bool ChangeTranslation(std::string english_word, std::string russian_translation);//done
+	bool ChangeTranslation(std::string english_word, std::string russian_translation);
 
-	std::string operator[](std::string english_word);//done
+	std::string operator[](std::string english_word);
 
-	bool ReadDictionaryFromFile(EnglishRussianDictionary& new_dictionary, std::string filename);//done
+	bool ReadDictionaryFromFile(EnglishRussianDictionary& new_dictionary, std::string filename);
 };
 
 
