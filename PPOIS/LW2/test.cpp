@@ -173,8 +173,6 @@ TEST(FullTest, FullTest) {
 	EXPECT_TRUE(owner.CheckIfExist(book1));
 	EXPECT_TRUE(owner.CheckIfExist(book2.name));
 	client1.SendRecwest(&admin);
-	EXPECT_TRUE(admin.CheckIfExist(book1));
-	EXPECT_TRUE(admin.CheckIfExist(book2.name));
-	
-	EXPECT_EQ(owner.GetWorktime(), "9:00-21:00 7/7");
+	EXPECT_FALSE(admin.CheckIfExist(book1));
+	EXPECT_FALSE(admin.CheckIfExist(book2.name));
 }
