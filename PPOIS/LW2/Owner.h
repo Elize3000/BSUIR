@@ -19,6 +19,6 @@ public:
 	bool AddBookcase(int max_ammaunt_of_book, int amaunt_of_sheld, std::string theam);
 	bool AddBookcase(int max_ammaunt_of_book, int amaunt_of_sheld, std::string author_first_name, std::string author_last_name);
 	bool AddBookcase(int max_ammaunt_of_book, int amaunt_of_sheld, std::string theam, std::string author_first_name, std::string author_last_name);
-	std::string GetWorktime();
+	std::string GetSheldure() const override;
 };
 

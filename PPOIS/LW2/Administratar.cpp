@@ -14,11 +14,16 @@ bool Administratar::SatisfyRequest(std::vector<std::string>& list_of_name,
 bool Administratar::GetBox(Box * box)
 {
 	place_of_work_->AddBox(*box);
-	return true;
+	return true; 
 }
 
 bool Administratar::TryToMoveBox()
 {
 	place_of_work_->UnpackBoxes();
 	return true;
+}
+
+std::string Administratar::GetSheldure() const
+{
+	return place_of_work_->GetWorktime();
 }

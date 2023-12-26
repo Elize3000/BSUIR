@@ -5,7 +5,8 @@
 class WarehouseSheldure
 {
 public:
-	std::string GetShedule();
+	std::string GetWorktime();
+	std::string GetWorkWeek();
 	void SetWorktime(std::string worktime);
 	void SetWorkweek(std::string workweek);
 protected:

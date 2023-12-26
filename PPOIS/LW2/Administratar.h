@@ -13,6 +13,7 @@ public:
 		std::vector<Book>& list_of_book);
 	bool GetBox(Box * box);
 	bool TryToMoveBox();
+	std::string GetSheldure() const override;
 };
 
 

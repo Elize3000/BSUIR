@@ -49,7 +49,9 @@ bool Owner::AddBookcase(int max_ammaunt_of_book, int amaunt_of_sheld, std::strin
 	return place_of_work_->AddBookcase(max_ammaunt_of_book, amaunt_of_sheld, theam, author_first_name, author_last_name);
 }
 
-std::string Owner::GetWorktime()
+std::string Owner::GetSheldure() const
 {
-	return place_of_work_->GetShedule();
+	return place_of_work_->GetWorkWeek();
 }
+
+

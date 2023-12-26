@@ -6,6 +6,7 @@ class AdminustrationUniuon
 {
 
 public:
+	virtual std::string GetSheldure() const = 0;
 	bool CheckIfExist(Book book);
 	bool CheckIfExist(std::string name);
 	bool AddBook(Book book);
